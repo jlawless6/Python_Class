@@ -1,7 +1,6 @@
 #!/home/jlawless/ VENV/py3_venv/bin/python
 
 from netmiko import ConnectHandler
-from getpass import getpass
 import yaml
 import os
 
