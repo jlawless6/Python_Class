@@ -19,17 +19,11 @@ filename = ".netmiko.yml"
 inventory = load_yaml_to_dict(os.path.join(home_dir, filename))
 
 
-net_connect = ConnectHandler(**inventory['cisco4'])
+net_connect = ConnectHandler(**inventory['nxos2'])
 
 
-output = net_connect.send_command("ping", strip_prompt=False, expect_string=r"Protocol") + "\n"
-output += net_connect.send_command("\n", strip_prompt=False, expect_string=r"Target IP address") + "\n"
-output += net_connect.send_command("8.8.8.8", strip_prompt=False, expect_string=r"Repeat count") + "\n"
-output += net_connect.send_command("\n", strip_prompt=False, expect_string=r"Datagram size") + "\n"
-output += net_connect.send_command("\n", strip_prompt=False, expect_string=r"Timeout in seconds") + "\n"
-output += net_connect.send_command("\n", strip_prompt=False, expect_string=r"Extended commands") + "\n"
-output += net_connect.send_command("n", strip_prompt=False, expect_string=r"Sweep range of sizes") + "\n"
-output += net_connect.send_command("\n", strip_prompt=False, expect_string=r"Success rate is") + "\n"
+output = net_connect.send_command("show lldp neighbors detail")
 print(output)
+print(net_connect.find_prompt())
 
 net_connect.disconnect()
