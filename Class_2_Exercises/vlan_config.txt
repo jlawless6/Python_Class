@@ -1,0 +1,6 @@
+vlan 120
+name vlan120
+vlan 220
+name vlan220
+vlan 320
+name vlan320
