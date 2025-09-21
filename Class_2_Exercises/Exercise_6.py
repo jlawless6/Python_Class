@@ -3,7 +3,6 @@
 from netmiko import ConnectHandler
 import yaml
 import os
-from datetime import datetime
 import time
 
 home_dir = os.path.expanduser("~")
