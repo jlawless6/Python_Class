@@ -7,6 +7,9 @@ from datetime import datetime
 
 home_dir = os.path.expanduser("~")
 
+# get current working directory of this python file
+cwd = os.path.dirname(os.path.abspath(__file__))
+
 def load_yaml_to_dict(file_path):
     with open(file_path, 'r') as f:
         try:
@@ -26,7 +29,7 @@ net_connect = {}
 
 for device in (nxos1, nxos2):
     net_connect[f"{device['host']}"] = ConnectHandler(**device)
-    output = net_connect[f"{device['host']}"].send_config_from_file("vlan_config.txt")
+    output = net_connect[f"{device['host']}"].send_config_from_file(os.path.join(cwd, "vlan_config.txt"))
     print(output)
     net_connect[f"{device['host']}"].save_config()
     net_connect[device['host']].disconnect()
