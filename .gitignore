@@ -206,5 +206,5 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-# custom additions
+# Custom Additions
 Class_3_Exercises/**/inventory.yml
