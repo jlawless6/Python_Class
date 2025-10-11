@@ -1,5 +1,11 @@
-{%- for router, vars in router_vars.items() %}
+{%- for router, vars in routers.items() %}
 {{ router }}
+
 interface {{ vars.interface }}
   ip address {{ vars.ip }}/{{ vars.netmask }}
+
+router bgp {{ local_as }}
+  neighbor {{ vars.peer_ip }} remote-as {{ local_as }}
+  address-family ipv4 unicast
+
 {% endfor %}
