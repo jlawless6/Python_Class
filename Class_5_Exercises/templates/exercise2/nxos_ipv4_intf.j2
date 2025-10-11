@@ -1,0 +1,5 @@
+{%- for router, vars in router_vars.items() %}
+{{ router }}
+interface {{ vars.interface }}
+  ip address {{ vars.ip }}/{{ vars.netmask }}
+{% endfor %}
